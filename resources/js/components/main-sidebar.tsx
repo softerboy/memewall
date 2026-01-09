@@ -80,6 +80,9 @@ export default function MainSidebar() {
                 <h2 className="text-2xl font-black tracking-tighter text-purple-700">
                     MemeWall
                 </h2>
+                <p className="text-xs font-medium text-gray-500 italic">
+                   Where productivity goes to die
+                </p>
             </div>
             {sidebarSections.map((section, index) => (
                 <div key={section.name} className="px-4 py-2">

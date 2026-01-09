@@ -21,15 +21,15 @@ export default function MainLayout({
 
                 <div className="flex justify-center gap-4">
                     <Button className="cursor-pointer bg-blue-500 hover:bg-blue-700">
-                        <SmilePlusIcon />
+                        <SmilePlusIcon className="mr-2 h-5 w-5 text-yellow-400" />
                         Create Meme
                     </Button>
                     <Button className="cursor-pointer" variant="outline">
-                        <HeartIcon />
+                        <HeartIcon className="mr-2 h-5 w-5 text-rose-500" />
                         My Favorites
                     </Button>
                     <Button className="cursor-pointer" variant="outline">
-                        <RocketIcon />
+                        <RocketIcon className="mr-2 h-5 w-5 text-blue-400" />
                         Top Memes
                     </Button>
                 </div>
