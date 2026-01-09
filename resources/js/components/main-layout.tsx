@@ -6,10 +6,10 @@ import { Button } from '@/components/ui/button';
 export default function MainLayout({
     children,
 }: {
-    children: React.ReactNode;
+    children?: React.ReactNode;
 }) {
     return (
-        <div className="bg-linear-[30deg] from-violet-500 via-white to-purple-300 pt-16">
+        <div className="bg-linear-[30deg] from-violet-500 via-white to-purple-300 pt-16 pb-16">
             <div className="grid grid-flow-col grid-rows-3 gap-4">
                 <h1 className="scroll-m-20 text-center text-4xl font-extrabold tracking-tight text-balance">
                     😂 Meme Wall 😎
@@ -35,7 +35,7 @@ export default function MainLayout({
                 </div>
             </div>
 
-            <div className="container m-auto h-[300px]">{children}</div>
+            <div className="container m-auto">{children}</div>
         </div>
     );
 }
