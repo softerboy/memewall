@@ -1,9 +1,12 @@
 import {
     CatIcon,
-    DogIcon,
     FlameIcon,
     HeartIcon,
     LaptopIcon,
+    LaughIcon,
+    MessageSquareIcon,
+    ShuffleIcon,
+    SparklesIcon,
 } from 'lucide-react';
 import React from 'react';
 
@@ -22,22 +25,24 @@ const sidebarSections: { name: string; items: MainSidebarItem[] }[] = [
             {
                 tag: 'trending',
                 title: 'Trending',
-                icon: <FlameIcon />,
+                icon: <FlameIcon className="mr-2 h-5 w-5 text-orange-500" />,
             },
             {
                 tag: 'newest',
                 title: 'Newest',
-                icon: <FlameIcon />,
+                icon: <SparklesIcon className="mr-2 h-5 w-5 text-blue-500" />,
             },
             {
                 tag: 'most_liked',
                 title: 'Most Liked',
-                icon: <HeartIcon />,
+                icon: <HeartIcon className="mr-2 h-5 w-5 text-rose-500" />,
             },
             {
                 tag: 'recently_commented',
                 title: 'Recently Commented',
-                icon: <FlameIcon />,
+                icon: (
+                    <MessageSquareIcon className="mr-2 h-5 w-5 text-emerald-500" />
+                ),
             },
         ],
     },
@@ -47,47 +52,22 @@ const sidebarSections: { name: string; items: MainSidebarItem[] }[] = [
             {
                 tag: 'funny',
                 title: 'Funny',
-                icon: <FlameIcon />,
+                icon: <LaughIcon className="mr-2 h-5 w-5 text-yellow-500" />,
             },
             {
                 tag: 'programming',
                 title: 'Programming',
-                icon: <LaptopIcon />,
+                icon: <LaptopIcon className="mr-2 h-5 w-5 text-indigo-500" />,
             },
             {
                 tag: 'cats',
                 title: 'Cats',
-                icon: <CatIcon />,
+                icon: <CatIcon className="mr-2 h-5 w-5 text-amber-600" />,
             },
             {
                 tag: 'random',
                 title: 'Random',
-                icon: <DogIcon />,
-            },
-        ],
-    },
-    {
-        name: 'other',
-        items: [
-            {
-                tag: 'other_1',
-                title: 'Other #1',
-                icon: <FlameIcon />,
-            },
-            {
-                tag: 'other_2',
-                title: 'Other #2',
-                icon: <FlameIcon />,
-            },
-            {
-                tag: 'other_3',
-                title: 'Other #3',
-                icon: <FlameIcon />,
-            },
-            {
-                tag: 'other_4',
-                title: 'Other #4',
-                icon: <FlameIcon />,
+                icon: <ShuffleIcon className="mr-2 h-5 w-5 text-purple-500" />,
             },
         ],
     },
