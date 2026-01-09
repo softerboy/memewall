@@ -5,20 +5,26 @@ import {
     HeartIcon,
     LaptopIcon,
 } from 'lucide-react';
-import { JSX } from 'react';
+import React, { JSX } from 'react';
 
 import { Button } from './ui/button';
 
 export interface MainSidebarItem {
     tag: string;
     title: string;
-    icon: JSX.Element;
+    icon: React.ReactNode;
 }
 
 const sidebarSections: { name: string; items: MainSidebarItem[] }[] = [
     {
         name: 'first',
         items: [
+            {
+                // dummy item for extra top space on the sidebar
+                tag: 'dummy',
+                title: '',
+                icon: '',
+            },
             {
                 tag: 'trending',
                 title: 'Trending',
