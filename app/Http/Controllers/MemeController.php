@@ -16,7 +16,7 @@ class MemeController extends Controller
     {
         // Render the home page with memes and registration status
         return Inertia::render('home', [
-            'memes' => $this->memeService->getLatestMemes(30),
+            'memes' => $this->memeService->getLatestMemes(10),
             'canRegister' => Features::enabled(Features::registration()),
         ]);
     }

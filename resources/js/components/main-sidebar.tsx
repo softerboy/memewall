@@ -5,7 +5,7 @@ import {
     HeartIcon,
     LaptopIcon,
 } from 'lucide-react';
-import React, { JSX } from 'react';
+import React from 'react';
 
 import { Button } from './ui/button';
 
@@ -19,12 +19,6 @@ const sidebarSections: { name: string; items: MainSidebarItem[] }[] = [
     {
         name: 'first',
         items: [
-            {
-                // dummy item for extra top space on the sidebar
-                tag: 'dummy',
-                title: '',
-                icon: '',
-            },
             {
                 tag: 'trending',
                 title: 'Trending',
@@ -100,21 +94,30 @@ const sidebarSections: { name: string; items: MainSidebarItem[] }[] = [
 ];
 
 export default function MainSidebar() {
-    return sidebarSections.map((section, index) => (
-        <div key={section.name} className="px-4 py-2">
-            {section.items.map((item) => (
-                <Button
-                    key={item.tag}
-                    className="mb-2 w-full cursor-pointer justify-start"
-                    variant="link"
-                >
-                    {item.icon}
-                    {item.title}
-                </Button>
+    return (
+        <>
+            <div className="px-6 py-4">
+                <h2 className="text-2xl font-black tracking-tighter text-purple-700">
+                    MemeWall
+                </h2>
+            </div>
+            {sidebarSections.map((section, index) => (
+                <div key={section.name} className="px-4 py-2">
+                    {section.items.map((item) => (
+                        <Button
+                            key={item.tag}
+                            className="mb-2 w-full cursor-pointer justify-start"
+                            variant="link"
+                        >
+                            {item.icon}
+                            {item.title}
+                        </Button>
+                    ))}
+                    {index !== sidebarSections.length - 1 && (
+                        <hr className="border-gray-300" />
+                    )}
+                </div>
             ))}
-            {index !== sidebarSections.length - 1 && (
-                <hr className="border-gray-300" />
-            )}
-        </div>
-    ));
+        </>
+    );
 }

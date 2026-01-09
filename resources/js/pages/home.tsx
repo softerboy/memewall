@@ -18,7 +18,9 @@ export default function Home({ memes }: HomeProps) {
         <MainLayout>
             <div className="mt-8 grid grid-flow-row grid-cols-12 shadow-md">
                 <div className="col-span-2 rounded-tl-md rounded-bl-md bg-purple-100 shadow-[inset_-12px_0_20px_theme(colors.purple.200)]">
-                    <MainSidebar />
+                    <div className="sticky top-4">
+                        <MainSidebar />
+                    </div>
                 </div>
                 <div className="col-span-10 rounded-tr-md rounded-br-md bg-purple-50 p-4">
                     <div>
