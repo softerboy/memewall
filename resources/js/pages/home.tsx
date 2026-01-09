@@ -9,7 +9,16 @@ export default function Home() {
                     <MainSidebar />
                 </div>
                 <div className="col-span-12 rounded-tr-md rounded-br-md bg-purple-50 p-4">
-                    Content
+                    <div>
+                        <div>
+                            <h1 className="text-xl font-bold text-gray-600">
+                                Meme Generator
+                            </h1>
+                        </div>
+                        <hr className="my-2 w-full border-t border-gray-300" />
+
+                        <div>Content goes here</div>
+                    </div>
                 </div>
             </div>
         </MainLayout>

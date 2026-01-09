@@ -5,9 +5,17 @@ import {
     HeartIcon,
     LaptopIcon,
 } from 'lucide-react';
+import { JSX } from 'react';
+
 import { Button } from './ui/button';
 
-const sidebarSections = [
+export interface MainSidebarItem {
+    tag: string;
+    title: string;
+    icon: JSX.Element;
+}
+
+const sidebarSections: { name: string; items: MainSidebarItem[] }[] = [
     {
         name: 'first',
         items: [
@@ -22,9 +30,14 @@ const sidebarSections = [
                 icon: <FlameIcon />,
             },
             {
-                id: 'most_liked',
+                tag: 'most_liked',
                 title: 'Most Liked',
                 icon: <HeartIcon />,
+            },
+            {
+                tag: 'recently_commented',
+                title: 'Recently Commented',
+                icon: <FlameIcon />,
             },
         ],
     },
@@ -32,48 +45,48 @@ const sidebarSections = [
         name: 'second',
         items: [
             {
-                id: 'funny',
+                tag: 'funny',
                 title: 'Funny',
                 icon: <FlameIcon />,
             },
             {
-                id: 'programming',
+                tag: 'programming',
                 title: 'Programming',
                 icon: <LaptopIcon />,
             },
             {
-                id: 'cats',
+                tag: 'cats',
                 title: 'Cats',
                 icon: <CatIcon />,
             },
             {
-                id: 'random',
+                tag: 'random',
                 title: 'Random',
                 icon: <DogIcon />,
             },
         ],
     },
     {
-        tag: 'other',
+        name: 'other',
         items: [
             {
-                id: 'other_1',
+                tag: 'other_1',
                 title: 'Other #1',
                 icon: <FlameIcon />,
             },
             {
-                id: 'other_1',
-                title: 'Other #1',
+                tag: 'other_2',
+                title: 'Other #2',
                 icon: <FlameIcon />,
             },
             {
-                id: 'other_1',
-                title: 'Other #1',
+                tag: 'other_3',
+                title: 'Other #3',
                 icon: <FlameIcon />,
             },
             {
-                id: 'other_1',
-                title: 'Other #1',
+                tag: 'other_4',
+                title: 'Other #4',
                 icon: <FlameIcon />,
             },
         ],
@@ -81,11 +94,11 @@ const sidebarSections = [
 ];
 
 export default function MainSidebar() {
-    return sidebarSections.map((section) => (
-        <div key={section.name} className="p-4">
+    return sidebarSections.map((section, index) => (
+        <div key={section.name} className="px-4 py-2">
             {section.items.map((item) => (
                 <Button
-                    key={item.id}
+                    key={item.tag}
                     className="mb-2 w-full cursor-pointer justify-start"
                     variant="link"
                 >
@@ -93,6 +106,9 @@ export default function MainSidebar() {
                     {item.title}
                 </Button>
             ))}
+            {index !== sidebarSections.length - 1 && (
+                <hr className="border-gray-300" />
+            )}
         </div>
     ));
 }
