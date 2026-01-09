@@ -1,6 +1,8 @@
+import { Search } from 'lucide-react';
 import MainLayout from '@/components/main-layout';
 import MainSidebar from '@/components/main-sidebar';
 import { MemeCard } from '@/components/meme-card';
+import { Input } from '@/components/ui/input';
 
 interface Meme {
     url: string;
@@ -28,6 +30,14 @@ export default function Home({ memes }: HomeProps) {
                             <h1 className="text-xl font-bold text-gray-600">
                                 Meme Generator
                             </h1>
+                            <div className="relative mt-2 max-w-sm">
+                                <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
+                                <Input
+                                    type="search"
+                                    placeholder="Search memes..."
+                                    className="pl-10"
+                                />
+                            </div>
                         </div>
                         <hr className="my-2 w-full border-t border-gray-300" />
 
