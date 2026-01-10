@@ -12,7 +12,7 @@ export default function MainLayout({
     children?: React.ReactNode;
 }) {
     return (
-        <div className="relative flex min-h-screen flex-col overflow-hidden bg-linear-to-br from-violet-500 via-purple-400 to-indigo-500 py-8 md:py-16">
+        <div className="relative flex min-h-screen flex-col bg-linear-to-br from-violet-500 via-purple-400 to-indigo-500 py-8 md:py-16">
             <DecorativeBubbles />
 
             <div className="relative z-10 px-4 text-center">

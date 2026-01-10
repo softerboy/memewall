@@ -16,9 +16,9 @@ export default function CreateMeme() {
         <MainLayout>
             <Head title="Create Meme" />
 
-            <div className="mt-4 grid grid-cols-1 overflow-hidden rounded-md bg-purple-50 shadow-md lg:grid-cols-12">
+            <div className="mt-4 grid grid-cols-1 rounded-md bg-purple-50 shadow-md lg:grid-cols-12">
                 {/* Desktop Sidebar */}
-                <div className="hidden bg-purple-100 shadow-[inset_-12px_0_20px_theme(colors.purple.200)] lg:col-span-3 lg:block xl:col-span-2">
+                <div className="hidden bg-purple-100 shadow-[inset_-12px_0_20px_theme(colors.purple.200)] lg:col-span-3 lg:block lg:rounded-l-md xl:col-span-2">
                     <div className="sticky top-4">
                         <MainSidebar />
                     </div>
