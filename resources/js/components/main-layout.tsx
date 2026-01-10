@@ -1,8 +1,10 @@
 import { HeartIcon, RocketIcon, SmilePlusIcon } from 'lucide-react';
 import React from 'react';
+import { Link } from '@inertiajs/react';
 
 import DecorativeBubbles from '@/components/decorative-bubbles';
 import { Button } from '@/components/ui/button';
+import memes from '@/routes/memes/index';
 
 export default function MainLayout({
     children,
@@ -10,7 +12,7 @@ export default function MainLayout({
     children?: React.ReactNode;
 }) {
     return (
-        <div className="relative overflow-hidden bg-linear-to-br from-violet-500 via-purple-400 to-indigo-500 py-8 md:py-16">
+        <div className="relative flex min-h-screen flex-col overflow-hidden bg-linear-to-br from-violet-500 via-purple-400 to-indigo-500 py-8 md:py-16">
             <DecorativeBubbles />
 
             <div className="relative z-10 px-4 text-center">
@@ -23,10 +25,12 @@ export default function MainLayout({
                 </h1>
 
                 <div className="mt-6 flex flex-wrap justify-center gap-3 md:gap-4">
-                    <Button className="w-full cursor-pointer bg-white text-purple-600 hover:bg-purple-50 sm:w-auto">
-                        <SmilePlusIcon className="mr-2 h-5 w-5 text-yellow-500" />
-                        Create Meme
-                    </Button>
+                    <Link href={memes.create()}>
+                        <Button className="w-full cursor-pointer bg-white text-purple-600 hover:bg-purple-50 sm:w-auto">
+                            <SmilePlusIcon className="mr-2 h-5 w-5 text-yellow-500" />
+                            Create Meme
+                        </Button>
+                    </Link>
                     <Button className="w-[calc(50%-0.5rem)] cursor-pointer border-white/40 bg-white/10 text-white hover:bg-white/20 sm:w-auto" variant="outline">
                         <HeartIcon className="mr-2 h-5 w-5 text-rose-300" />
                         Favorites

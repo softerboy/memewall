@@ -20,4 +20,9 @@ class MemeController extends Controller
             'canRegister' => Features::enabled(Features::registration()),
         ]);
     }
+
+    public function create()
+    {
+        return Inertia::render('memes/create');
+    }
 }

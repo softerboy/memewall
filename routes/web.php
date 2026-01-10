@@ -7,6 +7,7 @@ use Laravel\Fortify\Features;
 
 // Home page route showing the meme wall
 Route::get('/', [MemeController::class, 'index'])->name('home');
+Route::get('/memes/create', [MemeController::class, 'create'])->name('memes.create');
 
 // Routes that require authentication and email verification
 Route::middleware(['auth', 'verified'])->group(function () {
