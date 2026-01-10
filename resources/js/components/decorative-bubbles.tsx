@@ -11,7 +11,6 @@ export default function DecorativeBubbles() {
             {/* Floating Bubbles */}
             <div className="absolute top-10 left-10 h-12 w-12 rounded-full border border-white/20 bg-white/5 backdrop-blur-xs" />
             <div className="absolute top-40 right-20 h-20 w-20 rounded-full border border-white/20 bg-white/10 backdrop-blur-sm" />
-            <div className="absolute bottom-20 left-1/2 h-16 w-16 rounded-full border border-white/20 bg-white/5 backdrop-blur-xs" />
             <div className="absolute top-2/3 right-1/4 h-8 w-8 rounded-full border border-white/10 bg-white/5" />
         </div>
     );
