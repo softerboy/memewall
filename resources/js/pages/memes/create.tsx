@@ -19,6 +19,7 @@ import {
 } from '@/components/ui/sheet';
 import { home } from '@/routes';
 import { Head, Link } from '@inertiajs/react';
+import MemeMakerTool from '@/components/meme-maker-tool';
 
 export default function CreateMeme() {
     return (
@@ -73,12 +74,7 @@ export default function CreateMeme() {
                             </div>
                         </div>
 
-                        <div className="rounded-lg bg-white p-6 shadow-sm border border-purple-100">
-                            <p className="text-gray-600">
-                                Meme creation interface will go here.
-                            </p>
-                            {/* Add meme creation form or tool here in the future */}
-                        </div>
+                        <MemeMakerTool />
                     </div>
                 </div>
             </div>
