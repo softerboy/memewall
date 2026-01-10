@@ -1,6 +1,14 @@
 import { Menu } from 'lucide-react';
 import MainLayout from '@/components/main-layout';
 import MainSidebar from '@/components/main-sidebar';
+import {
+    Breadcrumb,
+    BreadcrumbItem,
+    BreadcrumbLink,
+    BreadcrumbList,
+    BreadcrumbPage,
+    BreadcrumbSeparator,
+} from '@/components/ui/breadcrumb';
 import { Button } from '@/components/ui/button';
 import {
     Sheet,
@@ -9,7 +17,8 @@ import {
     SheetTitle,
     SheetTrigger,
 } from '@/components/ui/sheet';
-import { Head } from '@inertiajs/react';
+import { home } from '@/routes';
+import { Head, Link } from '@inertiajs/react';
 
 export default function CreateMeme() {
     return (
@@ -27,6 +36,20 @@ export default function CreateMeme() {
                 {/* Main Content Area */}
                 <div className="p-4 lg:col-span-9 lg:rounded-tr-md lg:rounded-br-md xl:col-span-10">
                     <div className="flex flex-col gap-4">
+                        <Breadcrumb>
+                            <BreadcrumbList>
+                                <BreadcrumbItem>
+                                    <BreadcrumbLink asChild>
+                                        <Link href={home().url}>Home</Link>
+                                    </BreadcrumbLink>
+                                </BreadcrumbItem>
+                                <BreadcrumbSeparator />
+                                <BreadcrumbItem>
+                                    <BreadcrumbPage>Create Meme</BreadcrumbPage>
+                                </BreadcrumbItem>
+                            </BreadcrumbList>
+                        </Breadcrumb>
+
                         <div className="flex items-center justify-between">
                             <h2 className="text-2xl font-bold text-gray-800">
                                 Create a New Meme

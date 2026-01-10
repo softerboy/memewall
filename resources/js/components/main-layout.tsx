@@ -25,7 +25,7 @@ export default function MainLayout({
                 </h1>
 
                 <div className="mt-6 flex flex-wrap justify-center gap-3 md:gap-4">
-                    <Link href={memes.create()}>
+                    <Link href={memes.create().url}>
                         <Button className="w-full cursor-pointer bg-white text-purple-600 hover:bg-purple-50 sm:w-auto">
                             <SmilePlusIcon className="mr-2 h-5 w-5 text-yellow-500" />
                             Create Meme
