@@ -74,7 +74,7 @@ export default function Home({ memes }: HomeProps) {
                         <hr className="w-full border-t border-gray-300" />
 
                         {/* Responsive grid for memes */}
-                        <div className="columns-1 gap-4 sm:columns-2 md:columns-3 xl:columns-4">
+                        <div className="columns-2 gap-4 md:columns-3 xl:columns-4">
                             {memes.map((meme, index) => (
                                 <div
                                     key={index}

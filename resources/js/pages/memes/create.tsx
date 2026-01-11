@@ -32,7 +32,7 @@ export default function CreateMeme({
         <MainLayout>
             <Head title="Create Meme" />
 
-            <div className="mt-4 grid grid-cols-1 rounded-md bg-purple-50 shadow-md lg:grid-cols-12">
+            <div className="grid grid-cols-1 bg-purple-50 shadow-md lg:mt-4 lg:rounded-md lg:grid-cols-12">
                 {/* Desktop Sidebar */}
                 <div className="hidden bg-purple-100 shadow-[inset_-12px_0_20px_theme(colors.purple.200)] lg:col-span-3 lg:block lg:rounded-l-md xl:col-span-2">
                     <div className="sticky top-4">
@@ -58,7 +58,7 @@ export default function CreateMeme({
                         </Breadcrumb>
 
                         <div className="flex items-center justify-between">
-                            <h2 className="text-2xl font-bold text-gray-800">
+                            <h2 className="text-xl font-bold text-gray-800 md:text-2xl">
                                 Create a New Meme
                             </h2>
 

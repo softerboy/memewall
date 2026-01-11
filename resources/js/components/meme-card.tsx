@@ -60,32 +60,32 @@ export function MemeCard({
             <CardFooter className="flex flex-col items-start gap-3 pt-3 pb-4">
                 <div className="flex w-full items-center gap-3">
                     <div className="flex flex-col">
-                        <CardTitle className="line-clamp-1 text-sm font-semibold">
+                        <CardTitle className="text-sm font-semibold">
                             {title}
                         </CardTitle>
                     </div>
                 </div>
 
                 {/* Interaction Buttons: Like and Share */}
-                <div className="flex w-full items-center justify-between">
+                <div className="flex w-full flex-col gap-2 sm:flex-row sm:items-center sm:justify-between sm:gap-1">
                     <Button
-                        variant="outline"
+                        variant="ghost"
                         size="sm"
-                        className="flex h-8 items-center gap-1.5 rounded-full px-0 text-pink-600 hover:bg-transparent hover:text-pink-700"
+                        className="flex h-8 items-center justify-center gap-0.5 rounded-full px-1.5 text-pink-600 hover:bg-pink-50 hover:text-pink-700 sm:justify-start"
                         onClick={onLike}
                     >
-                        <Heart className="h-4 w-4 fill-pink-500 text-pink-500" />
-                        <span className="text-sm font-medium">{likes}</span>
+                        <Heart className="h-3.5 w-3.5 fill-pink-500 text-pink-500" />
+                        <span className="text-[10px] font-medium leading-none">{likes}</span>
                     </Button>
 
                     <Button
-                        variant="outline"
+                        variant="ghost"
                         size="sm"
-                        className="flex h-8 cursor-pointer items-center gap-1.5 rounded-full border-violet-200 px-3 text-violet-700 hover:bg-violet-50"
+                        className="flex h-8 cursor-pointer items-center justify-center gap-0.5 rounded-full px-1.5 text-violet-700 hover:bg-violet-50 sm:justify-start"
                         onClick={onShare}
                     >
-                        <Share2 className="h-3.5 w-3.5" />
-                        <span className="text-xs font-medium">Share</span>
+                        <Share2 className="h-3 w-3" />
+                        <span className="text-[10px] font-medium leading-none">Share</span>
                     </Button>
                 </div>
             </CardFooter>

@@ -70,20 +70,20 @@ export default function MemeMakerTool({
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
             {/* Left Card: Preview */}
             <Card className="flex flex-col overflow-hidden border-purple-100 shadow-sm lg:col-span-2">
-                <CardHeader>
+                <CardHeader className="p-4 md:p-6">
                     <CardTitle className="text-lg font-semibold text-purple-900">
                         Meme Preview
                     </CardTitle>
                 </CardHeader>
-                <CardContent className="flex flex-1 items-center justify-center p-6">
+                <CardContent className="flex flex-1 items-center justify-center p-4 md:p-6">
                     <div
                         ref={memeRef}
-                        className="relative overflow-hidden rounded-lg border border-gray-200 bg-gray-100"
+                        className="relative w-full overflow-hidden rounded-lg border border-gray-200 bg-gray-100"
                     >
                         <img
                             src={sourceImage}
                             alt="Meme Source"
-                            className="max-h-[400px] w-full object-contain"
+                            className="max-h-[300px] w-full object-contain md:max-h-[400px]"
                             crossOrigin="anonymous"
                         />
 
@@ -128,17 +128,17 @@ export default function MemeMakerTool({
                         </div>
                     </div>
                 </CardContent>
-                <CardFooter className="flex gap-3 bg-purple-50/50 pt-4">
+                <CardFooter className="flex flex-col gap-3 bg-purple-50/50 p-4 md:flex-row md:pt-4">
                     <Button
                         onClick={handleDownload}
-                        className="flex-1 bg-purple-600 hover:bg-purple-700"
+                        className="w-full bg-purple-600 hover:bg-purple-700 md:flex-1"
                     >
                         <Download className="mr-2 h-4 w-4" />
                         Download Meme
                     </Button>
                     <Button
                         variant="outline"
-                        className="flex-1 border-purple-200 text-purple-700 hover:bg-purple-50"
+                        className="w-full border-purple-200 text-purple-700 hover:bg-purple-50 md:flex-1"
                     >
                         <Save className="mr-2 h-4 w-4" />
                         Save To Meme Wall
@@ -148,12 +148,12 @@ export default function MemeMakerTool({
 
             {/* Right Card: Controls */}
             <Card className="border-purple-100 shadow-sm">
-                <CardHeader>
+                <CardHeader className="p-4 md:p-6">
                     <CardTitle className="text-lg font-semibold text-purple-900">
                         Instruments
                     </CardTitle>
                 </CardHeader>
-                <CardContent className="space-y-6">
+                <CardContent className="space-y-6 p-4 md:p-6">
                     {/* Text Inputs */}
                     <div className="space-y-4">
                         <div className="space-y-2">
