@@ -23,6 +23,8 @@ jobs:
           key: ${{ secrets.DO_SSH_KEY }}
           passphrase: ${{ secrets.DO_SSH_PASSPHRASE }}
           script: |
+            source ~/.bashrc
+            source ~/.profile
             cd /var/www/memewall
             git pull origin ${{ github.ref_name }}
             rm -rf public/build
