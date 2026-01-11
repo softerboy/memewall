@@ -11,69 +11,48 @@ on:
       - develop
 
 jobs:
-  deploy:
+  quality:
     runs-on: ubuntu-latest
-    if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop')
     steps:
-      - name: Deploy to Server
-        uses: appleboy/ssh-action@v1.2.0
-        with:
-          host: ${{ secrets.DO_HOST }}
-          username: ${{ secrets.DO_USERNAME }}
-          key: ${{ secrets.DO_SSH_KEY }}
-          passphrase: ${{ secrets.DO_SSH_PASSPHRASE }}
-          script: |
-            echo $SHELL
-            source ~/.bashrc
-            source ~/.profile
-            source ~/.zshrc
-            cd /var/www/memewall
-            git pull origin ${{ github.ref_name }}
-            rm -rf public/build
-            pnpm run build
+      - uses: actions/checkout@v4
 
-#  quality:
-#    runs-on: ubuntu-latest
-#    steps:
-#      - uses: actions/checkout@v4
-#
-#      - name: Setup PHP
-#        uses: shivammathur/setup-php@v2
-#        with:
-#          php-version: '8.4'
-#          extensions: mbstring, xml, ctype, iconv, mysql, bcmath, gd
-#          coverage: none
-#
-#      - name: Install pnpm
-#        uses: pnpm/action-setup@v4
-#        with:
-#          version: 10
-#
-#      - name: Setup Node
-#        uses: actions/setup-node@v4
-#        with:
-#          node-version: '22'
-#          cache: 'pnpm'
-#
-#      - name: Install Dependencies
-#        run: |
-#          composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
-#          pnpm install --frozen-lockfile
-#
-#      - name: Build Assets
-#        run: pnpm run build
-#
-#      - name: Lint Frontend
-#        run: pnpm run lint
-#
-#      - name: Check Formatting
-#        run: pnpm run format:check
-#
-#      - name: Create .env file
-#        run: cp .env.example .env
-#
-#      - name: Generate Application Key
-#        run: php artisan key:generate
-#
-#      - name: Run Tests
-#        run: php artisan test
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+          extensions: mbstring, xml, ctype, iconv, mysql, bcmath, gd
+          coverage: none
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'pnpm'
+
+      - name: Install Dependencies
+        run: |
+          composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+          pnpm install --frozen-lockfile
+
+      - name: Build Assets
+        run: pnpm run build
+
+      - name: Lint Frontend
+        run: pnpm run lint
+
+      - name: Check Formatting
+        run: pnpm run format:check
+
+      - name: Create .env file
+        run: cp .env.example .env
+
+      - name: Generate Application Key
+        run: php artisan key:generate
+
+      - name: Run Tests
+        run: php artisan test
