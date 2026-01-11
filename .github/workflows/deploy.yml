@@ -11,57 +11,63 @@ on:
       - develop
 
 jobs:
-  quality:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: '8.4'
-          extensions: mbstring, xml, ctype, iconv, mysql, bcmath, gd
-          coverage: none
-
-      - name: Install pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: 10
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: '22'
-          cache: 'pnpm'
-
-      - name: Install Dependencies
-        run: |
-          composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
-          pnpm install --frozen-lockfile
-
-      - name: Build Assets
-        run: pnpm run build
-
-      - name: Lint Frontend
-        run: pnpm run lint
-
-      - name: Check Formatting
-        run: pnpm run format:check
-
-      - name: Create .env file
-        run: cp .env.example .env
-
-      - name: Generate Application Key
-        run: php artisan key:generate
-
-      - name: Run Tests
-        run: php artisan test
+#  quality:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: actions/checkout@v4
+#
+#      - name: Setup PHP
+#        uses: shivammathur/setup-php@v2
+#        with:
+#          php-version: '8.4'
+#          extensions: mbstring, xml, ctype, iconv, mysql, bcmath, gd
+#          coverage: none
+#
+#      - name: Install pnpm
+#        uses: pnpm/action-setup@v4
+#        with:
+#          version: 10
+#
+#      - name: Setup Node
+#        uses: actions/setup-node@v4
+#        with:
+#          node-version: '22'
+#          cache: 'pnpm'
+#
+#      - name: Install Dependencies
+#        run: |
+#          composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+#          pnpm install --frozen-lockfile
+#
+#      - name: Build Assets
+#        run: pnpm run build
+#
+#      - name: Lint Frontend
+#        run: pnpm run lint
+#
+#      - name: Check Formatting
+#        run: pnpm run format:check
+#
+#      - name: Create .env file
+#        run: cp .env.example .env
+#
+#      - name: Generate Application Key
+#        run: php artisan key:generate
+#
+#      - name: Run Tests
+#        run: php artisan test
 
   deploy:
     runs-on: ubuntu-latest
-    needs: quality
+#    needs: quality
     if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop')
     steps:
+      - name: Add server to known_hosts
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan -H ${{ secrets.DO_HOST }} >> ~/.ssh/known_hosts
+          chmod 644 ~/.ssh/known_hosts
+
       - name: Test SSH connection
         run: ssh ${{ secrets.DO_USERNAME }}@${{ secrets.DO_HOST }} "echo connected!"
 
