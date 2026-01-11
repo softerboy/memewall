@@ -12,6 +12,15 @@ export default function Welcome({
     return (
         <>
             <Head title="Welcome">
+                <meta
+                    name="description"
+                    content="Welcome to Memewall - the ultimate platform to manage and showcase your meme collection."
+                />
+                <meta property="og:title" content="Welcome to Memewall" />
+                <meta
+                    property="og:description"
+                    content="Start your meme management journey with Memewall. Built for speed and ease of use."
+                />
                 <link rel="preconnect" href="https://fonts.bunny.net" />
                 <link
                     href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600"

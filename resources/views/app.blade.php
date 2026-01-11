@@ -32,6 +32,24 @@
 
         <title inertia>{{ config('app.name', 'Laravel') }}</title>
 
+        <meta name="description" content="Memewall - A place to manage and display your favorite memes. Built with Laravel, React, and Tailwind CSS.">
+        <meta name="author" content="Fakhriddin Umarov">
+        <meta name="keywords" content="memes, laravel, react, memewall, meme manager">
+
+        <!-- Open Graph / Facebook -->
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://memewall.fumarov.me/">
+        <meta property="og:title" content="Memewall - Meme Management Platform">
+        <meta property="og:description" content="Manage and display your memes with ease using Memewall.">
+        <meta property="og:image" content="https://memewall.fumarov.me/assets/home-page-banner.png">
+
+        <!-- Twitter -->
+        <meta property="twitter:card" content="summary_large_image">
+        <meta property="twitter:url" content="https://memewall.fumarov.me/">
+        <meta property="twitter:title" content="Memewall - Meme Management Platform">
+        <meta property="twitter:description" content="Manage and display your memes with ease using Memewall.">
+        <meta property="twitter:image" content="https://memewall.fumarov.me/assets/home-page-banner.png">
+
         <link rel="icon" href="https://fav.farm/%F0%9F%98%8E" sizes="any">
 {{--        <link rel="icon" href="/favicon.svg" type="image/svg+xml">--}}
         <link rel="apple-touch-icon" href="/apple-touch-icon.png">

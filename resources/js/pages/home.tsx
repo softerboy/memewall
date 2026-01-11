@@ -1,3 +1,4 @@
+import { Head } from '@inertiajs/react';
 import MainLayout from '@/components/main-layout';
 import MainSidebar from '@/components/main-sidebar';
 import { MemeCard } from '@/components/meme-card';
@@ -26,6 +27,7 @@ interface HomeProps {
 export default function Home({ memes }: HomeProps) {
     return (
         <MainLayout>
+            <Head title="Feed" />
             <div className="mt-4 grid grid-cols-1 rounded-md bg-purple-50 shadow-md lg:grid-cols-12">
                 {/* Desktop Sidebar */}
                 <div className="hidden bg-purple-100 shadow-[inset_-12px_0_20px_theme(colors.purple.200)] lg:col-span-3 lg:block lg:rounded-l-md xl:col-span-2">

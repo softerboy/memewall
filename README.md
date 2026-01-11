@@ -4,8 +4,8 @@
 
 A Laravel-based application for managing and displaying memes, built with React, Inertia.js, and Tailwind CSS.
 
-![Home Page Banner](public/assets/home-page-banner.png)
-![Meme Banner](public/assets/meme-banner.png)
+<img src="public/assets/home-page-banner.png" alt="Home Page Banner" width="600">
+<img src="public/assets/meme-banner.png" alt="Meme Banner" width="600">
 
 ## 🚀 Tech Stack
 
