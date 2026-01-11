@@ -47,7 +47,7 @@ export default function MemeMakerTool() {
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
             {/* Left Card: Preview */}
             <Card className="flex flex-col overflow-hidden border-purple-100 shadow-sm lg:col-span-2">
-                <CardHeader className="bg-purple-50/50 pb-4">
+                <CardHeader>
                     <CardTitle className="text-lg font-semibold text-purple-900">
                         Meme Preview
                     </CardTitle>
@@ -118,12 +118,12 @@ export default function MemeMakerTool() {
 
             {/* Right Card: Controls */}
             <Card className="border-purple-100 shadow-sm">
-                <CardHeader className="bg-purple-50/50 pb-4">
+                <CardHeader>
                     <CardTitle className="text-lg font-semibold text-purple-900">
                         Instruments
                     </CardTitle>
                 </CardHeader>
-                <CardContent className="space-y-6 p-6">
+                <CardContent className="space-y-6">
                     {/* Text Inputs */}
                     <div className="space-y-4">
                         <div className="space-y-2">
