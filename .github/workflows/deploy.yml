@@ -23,12 +23,14 @@ jobs:
           key: ${{ secrets.DO_SSH_KEY }}
           passphrase: ${{ secrets.DO_SSH_PASSPHRASE }}
           script: |
+            echo $SHELL
             source ~/.bashrc
             source ~/.profile
+            source ~/.zshrc
             cd /var/www/memewall
             git pull origin ${{ github.ref_name }}
             rm -rf public/build
-            ~/.local/share/pnpm/pnpm run build
+            pnpm run build
 
 #  quality:
 #    runs-on: ubuntu-latest
