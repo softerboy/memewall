@@ -28,7 +28,7 @@ jobs:
             cd /var/www/memewall
             git pull origin ${{ github.ref_name }}
             rm -rf public/build
-            pnpm run build
+            ~/.local/share/pnpm/pnpm run build
 
 #  quality:
 #    runs-on: ubuntu-latest
