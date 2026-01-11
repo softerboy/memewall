@@ -1,4 +1,3 @@
-import { Menu, Search } from 'lucide-react';
 import MainLayout from '@/components/main-layout';
 import MainSidebar from '@/components/main-sidebar';
 import { MemeCard } from '@/components/meme-card';
@@ -11,6 +10,7 @@ import {
     SheetTitle,
     SheetTrigger,
 } from '@/components/ui/sheet';
+import { Menu, Search } from 'lucide-react';
 
 interface Meme {
     url: string;
@@ -61,7 +61,7 @@ export default function Home({ memes }: HomeProps) {
                         </div>
 
                         <div className="relative max-w-sm">
-                            <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
+                            <Search className="absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 text-gray-400" />
                             <Input
                                 type="search"
                                 placeholder="Search memes..."

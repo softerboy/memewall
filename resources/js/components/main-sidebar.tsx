@@ -81,7 +81,7 @@ export default function MainSidebar() {
                     MemeWall
                 </h2>
                 <p className="text-xs font-medium text-gray-500 italic">
-                   Where productivity goes to die
+                    Where productivity goes to die
                 </p>
             </div>
             {sidebarSections.map((section, index) => (

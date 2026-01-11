@@ -1,6 +1,6 @@
-import { Menu } from 'lucide-react';
 import MainLayout from '@/components/main-layout';
 import MainSidebar from '@/components/main-sidebar';
+import MemeMakerTool from '@/components/meme-maker-tool';
 import {
     Breadcrumb,
     BreadcrumbItem,
@@ -19,7 +19,7 @@ import {
 } from '@/components/ui/sheet';
 import { home } from '@/routes';
 import { Head, Link } from '@inertiajs/react';
-import MemeMakerTool from '@/components/meme-maker-tool';
+import { Menu } from 'lucide-react';
 
 export default function CreateMeme({
     templateData,

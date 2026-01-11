@@ -1,5 +1,3 @@
-import React from 'react';
-
 export default function DecorativeBubbles() {
     return (
         <div className="pointer-events-none absolute inset-0 overflow-hidden">

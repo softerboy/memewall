@@ -9,6 +9,7 @@ import {
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
+import { toPng } from 'html-to-image';
 import {
     AlignCenter,
     AlignLeft,
@@ -18,7 +19,6 @@ import {
     Save,
     Type,
 } from 'lucide-react';
-import { toPng } from 'html-to-image';
 import { useRef, useState } from 'react';
 
 export default function MemeMakerTool({
@@ -302,7 +302,6 @@ export default function MemeMakerTool({
                                 </ToggleGroup>
                             </div>
                         </div>
-
                     </div>
                 </CardContent>
             </Card>

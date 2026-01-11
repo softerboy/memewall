@@ -1,6 +1,6 @@
+import { Link } from '@inertiajs/react';
 import { HeartIcon, RocketIcon, SmilePlusIcon } from 'lucide-react';
 import React from 'react';
-import { Link } from '@inertiajs/react';
 
 import DecorativeBubbles from '@/components/decorative-bubbles';
 import { Button } from '@/components/ui/button';
@@ -16,11 +16,11 @@ export default function MainLayout({
             <DecorativeBubbles />
 
             <div className="relative z-10 px-4 text-center">
-                <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight text-white drop-shadow-md md:text-5xl text-balance">
+                <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight text-balance text-white drop-shadow-md md:text-5xl">
                     😂 Meme Wall 😎
                 </h1>
 
-                <h1 className="mt-4 scroll-m-20 text-xl font-extrabold tracking-tight text-purple-100 drop-shadow-sm md:text-2xl text-balance">
+                <h1 className="mt-4 scroll-m-20 text-xl font-extrabold tracking-tight text-balance text-purple-100 drop-shadow-sm md:text-2xl">
                     Create, save and share your funniest memes!
                 </h1>
 
@@ -31,11 +31,17 @@ export default function MainLayout({
                             Create Meme
                         </Button>
                     </Link>
-                    <Button className="w-[calc(50%-0.5rem)] cursor-pointer border-white/40 bg-white/10 text-white hover:bg-white/20 sm:w-auto" variant="outline">
+                    <Button
+                        className="w-[calc(50%-0.5rem)] cursor-pointer border-white/40 bg-white/10 text-white hover:bg-white/20 sm:w-auto"
+                        variant="outline"
+                    >
                         <HeartIcon className="mr-2 h-5 w-5 text-rose-300" />
                         Favorites
                     </Button>
-                    <Button className="w-[calc(50%-0.5rem)] cursor-pointer border-white/40 bg-white/10 text-white hover:bg-white/20 sm:w-auto" variant="outline">
+                    <Button
+                        className="w-[calc(50%-0.5rem)] cursor-pointer border-white/40 bg-white/10 text-white hover:bg-white/20 sm:w-auto"
+                        variant="outline"
+                    >
                         <RocketIcon className="mr-2 h-5 w-5 text-blue-300" />
                         Top Memes
                     </Button>
