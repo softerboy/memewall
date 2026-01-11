@@ -20,7 +20,11 @@ import {
 } from 'lucide-react';
 import { useState } from 'react';
 
-export default function MemeMakerTool() {
+export default function MemeMakerTool({
+    templateImage,
+}: {
+    templateImage?: string;
+}) {
     const [topText, setTopText] = useState('TOP TEXT');
     const [bottomText, setBottomText] = useState('BOTTOM TEXT');
     const [fontSize, setFontSize] = useState(40);
@@ -40,7 +44,8 @@ export default function MemeMakerTool() {
 
     // Placeholder image for the meme source
     const [sourceImage] = useState(
-        'https://placehold.co/600x400/9333ea/ffffff?text=Meme+Template',
+        templateImage ||
+            'https://placehold.co/600x400/9333ea/ffffff?text=Meme+Template',
     );
 
     return (

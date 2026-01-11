@@ -23,6 +23,15 @@ class MemeController extends Controller
 
     public function create()
     {
-        return Inertia::render('memes/create');
+        $templateId = request()->query('template');
+        $templateData = null;
+
+        if ($templateId) {
+            $templateData = $this->memeService->getTemplate($templateId);
+        }
+
+        return Inertia::render('memes/create', [
+            'templateData' => $templateData,
+        ]);
     }
 }

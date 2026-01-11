@@ -57,4 +57,21 @@ class MemeService
 
         return Str::ucfirst($title) ?: 'Funny Meme';
     }
+
+    /**
+     * Fetch template details by ID.
+     *
+     * @param string $id
+     * @return array|null
+     */
+    public function getTemplate(string $id): ?array
+    {
+        $response = Http::get("{$this->baseUrl}/templates/{$id}");
+
+        if (!$response->successful()) {
+            return null;
+        }
+
+        return $response->json();
+    }
 }

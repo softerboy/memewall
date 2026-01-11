@@ -21,7 +21,13 @@ import { home } from '@/routes';
 import { Head, Link } from '@inertiajs/react';
 import MemeMakerTool from '@/components/meme-maker-tool';
 
-export default function CreateMeme() {
+export default function CreateMeme({
+    templateData,
+}: {
+    templateData?: {
+        blank: string;
+    } | null;
+}) {
     return (
         <MainLayout>
             <Head title="Create Meme" />
@@ -74,7 +80,7 @@ export default function CreateMeme() {
                             </div>
                         </div>
 
-                        <MemeMakerTool />
+                        <MemeMakerTool templateImage={templateData?.blank} />
                     </div>
                 </div>
             </div>

@@ -83,6 +83,7 @@ export default function Home({ memes }: HomeProps) {
                                         imageUrl={meme.url}
                                         title={meme.title}
                                         likes={meme.likes}
+                                        templateUrl={meme.template}
                                     />
                                 </div>
                             ))}
