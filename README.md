@@ -1,6 +1,11 @@
 # Memewall
 
+[![Live Demo](https://img.shields.io/badge/Live-Demo-brightgreen)](https://memewall.fumarov.me)
+
 A Laravel-based application for managing and displaying memes, built with React, Inertia.js, and Tailwind CSS.
+
+![Home Page Banner](public/assets/home-page-banner.png)
+![Meme Banner](public/assets/meme-banner.png)
 
 ## 🚀 Tech Stack
 
