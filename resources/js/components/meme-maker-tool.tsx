@@ -18,13 +18,15 @@ import {
     Save,
     Type,
 } from 'lucide-react';
-import { useState } from 'react';
+import { toPng } from 'html-to-image';
+import { useRef, useState } from 'react';
 
 export default function MemeMakerTool({
     templateImage,
 }: {
     templateImage?: string;
 }) {
+    const memeRef = useRef<HTMLDivElement>(null);
     const [topText, setTopText] = useState('TOP TEXT');
     const [bottomText, setBottomText] = useState('BOTTOM TEXT');
     const [fontSize, setFontSize] = useState(40);
@@ -48,6 +50,22 @@ export default function MemeMakerTool({
             'https://placehold.co/600x400/9333ea/ffffff?text=Meme+Template',
     );
 
+    const handleDownload = async () => {
+        if (memeRef.current === null) {
+            return;
+        }
+
+        try {
+            const dataUrl = await toPng(memeRef.current, { cacheBust: true });
+            const link = document.createElement('a');
+            link.download = `meme-${Date.now()}.png`;
+            link.href = dataUrl;
+            link.click();
+        } catch (err) {
+            console.error('Failed to download meme:', err);
+        }
+    };
+
     return (
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
             {/* Left Card: Preview */}
@@ -58,11 +76,15 @@ export default function MemeMakerTool({
                     </CardTitle>
                 </CardHeader>
                 <CardContent className="flex flex-1 items-center justify-center p-6">
-                    <div className="relative overflow-hidden rounded-lg border border-gray-200 bg-gray-100">
+                    <div
+                        ref={memeRef}
+                        className="relative overflow-hidden rounded-lg border border-gray-200 bg-gray-100"
+                    >
                         <img
                             src={sourceImage}
                             alt="Meme Source"
                             className="max-h-[400px] w-full object-contain"
+                            crossOrigin="anonymous"
                         />
 
                         {/* Overlay Text */}
@@ -107,7 +129,10 @@ export default function MemeMakerTool({
                     </div>
                 </CardContent>
                 <CardFooter className="flex gap-3 bg-purple-50/50 pt-4">
-                    <Button className="flex-1 bg-purple-600 hover:bg-purple-700">
+                    <Button
+                        onClick={handleDownload}
+                        className="flex-1 bg-purple-600 hover:bg-purple-700"
+                    >
                         <Download className="mr-2 h-4 w-4" />
                         Download Meme
                     </Button>
