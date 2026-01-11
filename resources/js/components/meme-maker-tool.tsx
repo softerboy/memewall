@@ -26,6 +26,17 @@ export default function MemeMakerTool() {
     const [fontSize, setFontSize] = useState(40);
     const [textAlign, setTextAlign] = useState('center');
     const [fontWeight, setFontWeight] = useState('bold');
+    const [textColor, setTextColor] = useState('#ffffff');
+
+    const colors = [
+        '#ffffff', // White
+        '#000000', // Black
+        '#ef4444', // Red
+        '#facc15', // Yellow
+        '#22c55e', // Green
+        '#3b82f6', // Blue
+        '#a855f7', // Purple
+    ];
 
     // Placeholder image for the meme source
     const [sourceImage] = useState(
@@ -61,7 +72,7 @@ export default function MemeMakerTool() {
                                         | 'right',
                                     fontWeight:
                                         fontWeight === 'bold' ? '900' : '400',
-                                    color: 'white',
+                                    color: textColor,
                                     textShadow:
                                         '2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 0 2px 0 #000, 0 -2px 0 #000, 2px 0 0 #000, -2px 0 0 #000',
                                     lineHeight: '1.2',
@@ -79,7 +90,7 @@ export default function MemeMakerTool() {
                                         | 'right',
                                     fontWeight:
                                         fontWeight === 'bold' ? '900' : '400',
-                                    color: 'white',
+                                    color: textColor,
                                     textShadow:
                                         '2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 0 2px 0 #000, 0 -2px 0 #000, 2px 0 0 #000, -2px 0 0 #000',
                                     lineHeight: '1.2',
@@ -155,6 +166,28 @@ export default function MemeMakerTool() {
                             <Type className="mr-2 h-4 w-4 text-purple-600" />
                             Text Styling
                         </h3>
+
+                        {/* Text Color */}
+                        <div className="space-y-2">
+                            <Label className="text-xs font-medium text-gray-600">
+                                Text Color
+                            </Label>
+                            <div className="flex flex-wrap gap-2">
+                                {colors.map((color) => (
+                                    <button
+                                        key={color}
+                                        onClick={() => setTextColor(color)}
+                                        className={`h-6 w-6 rounded-full border border-gray-200 transition-transform hover:scale-110 ${
+                                            textColor === color
+                                                ? 'ring-2 ring-purple-500 ring-offset-2'
+                                                : ''
+                                        }`}
+                                        style={{ backgroundColor: color }}
+                                        title={color}
+                                    />
+                                ))}
+                            </div>
+                        </div>
 
                         {/* Font Size */}
                         <div className="space-y-3">
@@ -239,6 +272,7 @@ export default function MemeMakerTool() {
                                 </ToggleGroup>
                             </div>
                         </div>
+
                     </div>
                 </CardContent>
             </Card>
