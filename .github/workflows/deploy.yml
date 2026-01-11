@@ -11,6 +11,23 @@ on:
       - develop
 
 jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop')
+    steps:
+      - name: Deploy to Server
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: ${{ secrets.DO_HOST }}
+          username: ${{ secrets.DO_USERNAME }}
+          key: ${{ secrets.DO_SSH_KEY }}
+          passphrase: ${{ secrets.DO_SSH_PASSPHRASE }}
+          script: |
+            cd /var/www/memewall
+            git pull origin ${{ github.ref_name }}
+            rm -rf public/build
+            pnpm run build
+
 #  quality:
 #    runs-on: ubuntu-latest
 #    steps:
@@ -56,36 +73,3 @@ jobs:
 #
 #      - name: Run Tests
 #        run: php artisan test
-
-  deploy:
-    runs-on: ubuntu-latest
-#    needs: quality
-    if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop')
-    steps:
-      - name: Add server to known_hosts
-        run: |
-          mkdir -p ~/.ssh
-          ssh-keyscan -H ${{ secrets.DO_HOST }} >> ~/.ssh/known_hosts
-          chmod 644 ~/.ssh/known_hosts
-
-      - name: Test SSH connection
-        run: ssh ${{ secrets.DO_USERNAME }}@${{ secrets.DO_HOST }} "echo connected!"
-
-      - name: Deploy to DigitalOcean
-        uses: appleboy/ssh-action@v1.2.0
-        env:
-          BRANCH_NAME: ${{ github.ref_name }}
-        with:
-          host: ${{ secrets.DO_HOST }}
-          username: ${{ secrets.DO_USERNAME }}
-          key: ${{ secrets.DO_SSH_KEY }}
-          passphrase: ${{ secrets.DO_SSH_PASSPHRASE }}
-          envs: BRANCH_NAME
-          script: |
-            cd /var/www/memewall # Assuming this is the project folder
-            git pull origin $BRANCH_NAME
-            rm -rf public/build
-            pnpm install
-            pnpm run build
-            php artisan migrate --force
-            php artisan optimize
