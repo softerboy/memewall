@@ -62,14 +62,18 @@ jobs:
     needs: quality
     if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop')
     steps:
+      - name: Test SSH connection
+        run: ssh ${{ secrets.DO_USERNAME }}@${{ secrets.DO_HOST }} "echo connected!"
+
       - name: Deploy to DigitalOcean
         uses: appleboy/ssh-action@v1.2.0
         env:
           BRANCH_NAME: ${{ github.ref_name }}
         with:
-          host: ${{ vars.DO_HOST }}
-          username: ${{ vars.DO_USERNAME }}
+          host: ${{ secrets.DO_HOST }}
+          username: ${{ secrets.DO_USERNAME }}
           key: ${{ secrets.DO_SSH_KEY }}
+          passphrase: ${{ secrets.DO_SSH_PASSPHRASE }}
           envs: BRANCH_NAME
           script: |
             cd /var/www/memewall # Assuming this is the project folder
