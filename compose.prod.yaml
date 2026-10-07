@@ -1,0 +1,36 @@
+# Production stack. The box holds no checkout: CI drives this file over a remote
+# Docker context (see .github/workflows/deploy.yml). The container joins the
+# shared external `edge` network, where the edge proxy (softerboy/infra) reaches
+# it as memewall:8080 for memewall.fumarov.me.
+services:
+  memewall:
+    image: ${IMAGE:-ghcr.io/softerboy/memewall:latest}
+    container_name: memewall
+    restart: unless-stopped
+    environment:
+      APP_NAME: MemeWall
+      APP_URL: https://memewall.fumarov.me
+      SESSION_SECURE_COOKIE: "true"
+      # No outbound mail on this demo; nothing needs a worker.
+      MAIL_MAILER: log
+      QUEUE_CONNECTION: sync
+    volumes:
+      # SQLite DB + the auto-minted APP_KEY (see docker/entrypoint.sh).
+      - memewall-data:/var/lib/memewall
+    expose:
+      - "8080"
+    healthcheck:
+      test: ["CMD", "php", "-r", "exit(@file_get_contents('http://127.0.0.1:8080/up') === false ? 1 : 0);"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+    networks:
+      - edge
+
+volumes:
+  memewall-data:
+
+networks:
+  edge:
+    external: true

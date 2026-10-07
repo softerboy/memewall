@@ -16,6 +16,10 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware): void {
         $middleware->encryptCookies(except: ['appearance', 'sidebar_state']);
 
+        // Behind the edge proxy (Cloudflare -> Caddy): honour X-Forwarded-* so
+        // generated URLs are https. The container is only reachable via that proxy.
+        $middleware->trustProxies(at: '*');
+
         $middleware->web(append: [
             HandleAppearance::class,
             HandleInertiaRequests::class,
